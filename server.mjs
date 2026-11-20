@@ -29,7 +29,7 @@ app.get('/', (_req, res) => res.json({ app: 'Batalha de Seguidores LIVE', liveSt
 app.get('/health', (_req, res) => res.json({ ok: true, liveState, username: TIKTOK_USERNAME }));
 wss.on('connection', socket => socket.send(JSON.stringify({ type: 'status', liveState, username: TIKTOK_USERNAME })));
 
-const connection = new TikTokLiveConnection(TIKTOK_USERNAME);
+const connection = new TikTokLiveConnection(TIKTOK_USERNAME, {});
 connection.on(ControlEvent.ERROR, ({ info, exception }) => {
   liveState = 'error';
   broadcast({ type: 'status', liveState, message: info || exception?.message || 'Falha na conexão com a LIVE.' });
