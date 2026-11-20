@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: batalha-seguidores-live-bridge
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: TIKTOK_USERNAME
+        value: fabio.maral93
